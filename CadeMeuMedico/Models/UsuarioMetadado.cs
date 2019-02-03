@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace CadeMeuMedico.Models
 {
     [MetadataType(typeof(UsuarioMetadado))]
-    public partial class Usuario { }
+    public partial class Usuarios { }
     
     public class UsuarioMetadado
     {

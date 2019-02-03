@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace CadeMeuMedico.Models
 {
     [MetadataType(typeof(EspecialidadeMetadado))]
-    public partial class Especialidade { }
+    public partial class Especialidades { }
     public class EspecialidadeMetadado
     {
         [Required(ErrorMessage = "Obrigatório informar o nome")]

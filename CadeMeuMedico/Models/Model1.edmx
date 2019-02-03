@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CadeMeuMedicoBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CadeMeuMedicoBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BANNERSPUBLICITARIOS">
+          <Key>
+            <PropertyRef Name="IDBANNER" />
+          </Key>
+          <Property Name="IDBANNER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITULOCAMPANHA" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="BANNERCAMPANHA" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LINKBANNER" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="Cidades">
           <Key>
             <PropertyRef Name="IDCidade" />
@@ -70,6 +79,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CadeMeuMedicoBDModelStoreContainer">
+          <EntitySet Name="BANNERSPUBLICITARIOS" EntityType="Self.BANNERSPUBLICITARIOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cidades" EntityType="Self.Cidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Especialidades" EntityType="Self.Especialidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicos" EntityType="Self.Medicos" Schema="dbo" store:Type="Tables" />
@@ -83,8 +93,7 @@
             <End Role="Medicos" EntitySet="Medicos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CadeMeuMedicoBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -169,7 +178,17 @@
             <End Role="Especialidades" EntitySet="Especialidades" />
             <End Role="Medicos" EntitySet="Medicos" />
           </AssociationSet>
+          <EntitySet Name="BANNERSPUBLICITARIOS" EntityType="CadeMeuMedicoBDModel.BANNERSPUBLICITARIOS" />
         </EntityContainer>
+        <EntityType Name="BANNERSPUBLICITARIOS">
+          <Key>
+            <PropertyRef Name="IDBANNER" />
+          </Key>
+          <Property Name="IDBANNER" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITULOCAMPANHA" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="BANNERCAMPANHA" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LINKBANNER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -217,6 +236,16 @@
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Senha" ColumnName="Senha" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BANNERSPUBLICITARIOS">
+            <EntityTypeMapping TypeName="CadeMeuMedicoBDModel.BANNERSPUBLICITARIOS">
+              <MappingFragment StoreEntitySet="BANNERSPUBLICITARIOS">
+                <ScalarProperty Name="LINKBANNER" ColumnName="LINKBANNER" />
+                <ScalarProperty Name="BANNERCAMPANHA" ColumnName="BANNERCAMPANHA" />
+                <ScalarProperty Name="TITULOCAMPANHA" ColumnName="TITULOCAMPANHA" />
+                <ScalarProperty Name="IDBANNER" ColumnName="IDBANNER" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
